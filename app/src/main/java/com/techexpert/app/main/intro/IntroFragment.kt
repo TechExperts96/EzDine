@@ -8,10 +8,7 @@ import com.techexpert.app.R
 import com.techexpert.app.databinding.FragmentIntroBinding
 import com.techexpert.app.foundation.base.BaseFragment
 import com.techexpert.app.foundation.base.UIEvent
-import com.techexpert.app.foundation.network.models.response.app.CarouselModel
-import com.techexpert.app.main.IntroPagerAdapter
 import com.techexpert.app.main.MainActivity
-import com.techexpert.app.util.showShortToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,7 +36,6 @@ class IntroFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getCarousels()
     }
 
     override fun onResume() {
@@ -54,33 +50,14 @@ class IntroFragment :
 
     override fun onUIEventTriggered(event: UIEvent) {
         when (event) {
-            is UIEvent.APIErrorResponse -> {
-                requireContext().showShortToast(event.error)
-            }
             is UIEvent.ShowLoadingDialog -> {
                 showProgressDialog()
             }
-            is UIEvent.RenderCarousel -> {
-                setupIntroPagerAdapter(event.carousels)
-                hideProgressDialog()
-            }
             is UIEvent.OnNextClick -> {
-                if (binding.introPager.currentItem == adapter.count - 1) {
-                    // TODO: navigate to next screen
-                } else {
-                    binding.introPager.setCurrentItem(binding.introPager.currentItem + 1, true)
-                }
             }
             is UIEvent.OnSkipClick -> {
-                binding.introPager.setCurrentItem(adapter.count - 1, true)
             }
         }
-    }
-
-    private fun setupIntroPagerAdapter(carousels: ArrayList<CarouselModel>) {
-        adapter = IntroPagerAdapter(requireContext(), carousels, viewModel)
-        binding.introPager.adapter = adapter
-        binding.intoTabLayout.setupWithViewPager(binding.introPager)
     }
 
     override fun onDestroyView() {

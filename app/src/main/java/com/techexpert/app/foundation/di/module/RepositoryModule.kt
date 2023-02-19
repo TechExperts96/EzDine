@@ -1,6 +1,5 @@
 package com.techexpert.app.foundation.di.module
 
-import com.techexpert.app.foundation.network.interfaces.RBService
 import com.techexpert.app.foundation.network.repository.BaseRepository
 import dagger.Module
 import dagger.Provides
@@ -14,7 +13,5 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideMainRepository(rbService: RBService): BaseRepository = BaseRepository(
-        rbService
-    )
+    fun provideMainRepository(): BaseRepository = BaseRepository()
 }

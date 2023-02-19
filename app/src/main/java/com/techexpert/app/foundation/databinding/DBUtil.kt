@@ -4,7 +4,6 @@ import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
-import com.techexpert.app.foundation.network.HttpConstants
 
 class DBUtil {
     companion object {
@@ -19,7 +18,7 @@ class DBUtil {
             } else {
                 Glide
                     .with(imageView.context)
-                    .load(HttpConstants.RESOURCE_URL + url)
+                    .load(url)
                     .centerCrop()
                     .placeholder(placeHolder)
                     .into(imageView)
