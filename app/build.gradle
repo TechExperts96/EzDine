@@ -1,0 +1,152 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-kapt'
+//    id 'com.google.gms.google-services'
+//    id 'com.google.firebase.crashlytics'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-parcelize'
+}
+
+android {
+    namespace 'com.techexpert.app'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.techexpert.app"
+        minSdk 29
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions += "type"
+    productFlavors {
+        dev {
+            versionNameSuffix '-alpha'
+            applicationIdSuffix ".dev"
+            dimension "type"
+            //singingConfig originally placed here, but it is placed at debug tag for now due to AssetLinks not able to read configFile
+            //signingConfig signingConfigs.dev
+            buildConfigField "String", "HOST_URL", "\"https://https://base_url/api/\""
+        }
+        prod {
+            dimension "type"
+            buildConfigField "String", "HOST_URL", "\"\""
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+    packagingOptions {
+        resources {
+            excludes += ['/META-INF/{AL2.0,LGPL2.1}', 'lib/armeabi/**']
+        }
+        jniLibs {
+            excludes += ['lib/armeabi/**']
+        }
+    }
+}
+
+configurations {
+    ktlint
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    //Splash screen
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
+    //Lottie
+    implementation "com.airbnb.android:lottie:5.2.0"
+
+    // OKHttp
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:5.0.0-alpha.10'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation 'androidx.annotation:annotation:1.5.0'
+
+    // navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    implementation 'androidx.databinding:databinding-runtime:7.4.1'
+
+
+    // Root detection library
+    implementation 'com.scottyab:rootbeer-lib:0.1.0'
+
+    // Image loading library
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    kapt 'com.github.bumptech.glide:compiler:4.14.2'
+
+    //firebase
+/*    implementation platform('com.google.firebase:firebase-bom:30.5.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+    releaseImplementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-config-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'*/
+
+
+    //LifeCycle
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    // hilt
+    implementation("com.google.dagger:hilt-android:$googel_hilt_version")
+    kapt("com.google.dagger:hilt-android-compiler:$googel_hilt_version")
+    kapt "androidx.hilt:hilt-compiler:$androidx_hilt_version"
+    implementation "androidx.hilt:hilt-navigation-compose:$androidx_hilt_version"
+
+    //retrofit
+    implementation "com.google.code.gson:gson:$gson_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // Android resize library for sp/dp
+    implementation "com.intuit.sdp:sdp-android:1.1.0"
+    implementation "com.intuit.ssp:ssp-android:1.1.0"
+}
+
+preBuild.dependsOn ktlintFormat
+
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
+}
