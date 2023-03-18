@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.techexpert.app.App"
+        android:name="com.techexpert.ezdine.app.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,7 +16,7 @@
         android:theme="@style/Theme.BaseTheme"
         tools:targetApi="31">
         <activity
-            android:name="com.techexpert.app.splash.SplashScreen2Activity"
+            android:name="com.techexpert.ezdine.app.splash.SplashScreen2Activity"
             android:exported="true" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,7 @@
         </intent-filter>
         </activity>
         <activity
-            android:name="com.techexpert.app.splash.SplashScreenActivity"
+            android:name="com.techexpert.ezdine.app.splash.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.App.Starting">
 <!--            <intent-filter>-->
@@ -35,7 +35,7 @@
 <!--            </intent-filter>-->
         </activity>
         <activity
-            android:name="com.techexpert.app.main.MainActivity"
+            android:name="com.techexpert.ezdine.app.main.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light" />
     </application>

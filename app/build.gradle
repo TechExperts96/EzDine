@@ -10,11 +10,11 @@ plugins {
 }
 
 android {
-    namespace 'com.techexpert.app'
+    namespace 'com.techexpert.ezdine.app'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.techexpert.app"
+        applicationId "com.techexpert.ezdine.app"
         minSdk 29
         targetSdk 33
         versionCode 1

@@ -10,7 +10,7 @@
 
         <variable
             name="vm"
-            type="com.techexpert.app.main.intro.IntroViewModel" />
+            type="com.techexpert.ezdine.app.main.intro.IntroViewModel" />
     </data>
 
 
