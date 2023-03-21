@@ -1,9 +1,15 @@
 package com.techexpert.ezdine.app.main.intro
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.PagerAdapter
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.techexpert.ezdine.app.R
 import com.techexpert.ezdine.app.databinding.FragmentIntroBinding
 import com.techexpert.ezdine.app.foundation.base.BaseFragment
@@ -17,7 +23,6 @@ class IntroFragment :
         R.layout.fragment_intro,
         IntroViewModel::class
     ) {
-
     lateinit var adapter: PagerAdapter
 
     override fun FragmentIntroBinding.initialize() {
@@ -36,6 +41,34 @@ class IntroFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requireActivity().window.statusBarColor =
+            ContextCompat.getColor(requireActivity(), R.color.dark_black)
+        var foodCategoryList = ArrayList<String>()
+        foodCategoryList.add("Chinese")
+        foodCategoryList.add("Main course")
+        foodCategoryList.add("Break fast")
+        foodCategoryList.add("Dessert")
+//        foodCategoryList.forEach { category ->
+//            binding.cgFoodCategories.addChip(requireActivity(), category)
+//        }
+    }
+
+    private fun ChipGroup.addChip(context: Context, label: String) {
+        try {
+            var chip = layoutInflater.inflate(R.layout.row_chip_view, this, false) as Chip
+            chip.apply {
+                id = View.generateViewId()
+                text = label
+                isClickable = true
+                isCheckable = true
+                setChipSpacingHorizontalResource(R.dimen.dm_16)
+                isCheckedIconVisible = false
+                isFocusable = true
+                addView(this)
+            }
+        } catch (e: Exception) {
+            Log.e("Error", e.message.toString())
+        }
     }
 
     override fun onResume() {

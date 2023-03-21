@@ -45,8 +45,8 @@
         <item name="android:textSize">@dimen/text_size_14</item>
         <item name="android:letterSpacing">0.01</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:paddingStart">@dimen/size_10</item>
-        <item name="android:paddingEnd">@dimen/size_10</item>
+        <item name="android:paddingStart">@dimen/dm_10</item>
+        <item name="android:paddingEnd">@dimen/dm_10</item>
     </style>
 
 
@@ -55,5 +55,10 @@
         <!--        <item name="android:font">@font/mavenpro_extrabold</item>-->
         <item name="android:fontWeight">700</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ThemeOverlay.SearchView" parent="@style/Widget.AppCompat.SearchView">
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:editTextColor">@color/gray</item>
     </style>
 </resources>
