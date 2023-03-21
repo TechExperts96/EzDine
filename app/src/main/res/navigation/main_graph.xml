@@ -10,5 +10,27 @@
         android:id="@+id/introFragment"
         android:name="com.techexpert.ezdine.app.main.intro.IntroFragment"
         android:label="IntroFragment"
-        tools:layout="@layout/fragment_intro" />
+        tools:layout="@layout/fragment_intro" >
+        <action
+            android:id="@+id/action_introFragment_to_itemDetailFragment"
+            app:destination="@id/itemDetailFragment" />
+        <action
+            android:id="@+id/action_introFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/itemDetailFragment"
+        android:name="com.techexpert.ezdine.app.main.detail.ItemDetailFragment"
+        android:label="ItemDetailFragment"
+        tools:layout="@layout/fragment_item_details"/>
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.techexpert.ezdine.app.main.cart.CartFragment"
+        android:label="CartFragment"
+        tools:layout="@layout/fragment_cart"
+        />
+
 </navigation>

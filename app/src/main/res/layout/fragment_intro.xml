@@ -319,6 +319,7 @@
                 android:layout_marginBottom="@dimen/dm_16"
                 app:cardCornerRadius="@dimen/dm_12"
                 app:cardElevation="0dp"
+                android:onClick="@{()->vm.onNextClick()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvRecommended">
@@ -390,6 +391,7 @@
                 android:layout_marginBottom="@dimen/dm_16"
                 app:cardCornerRadius="@dimen/dm_12"
                 app:cardElevation="0dp"
+                android:onClick="@{()->vm.onSkipClick()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cvItem1"

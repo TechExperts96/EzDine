@@ -6,7 +6,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.navigateUp
 import com.techexpert.ezdine.app.R
 import com.techexpert.ezdine.app.databinding.ActivityMainBinding
@@ -34,7 +33,7 @@ class MainActivity :
             AppBarConfiguration.Builder()
                 .setFallbackOnNavigateUpListener { onNavigateUp() }
                 .build()
-        setupActionBarWithNavController(this, navController, appBarConfiguration)
+//        setupActionBarWithNavController(this, navController, appBarConfiguration)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)

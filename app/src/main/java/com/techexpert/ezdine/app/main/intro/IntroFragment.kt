@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.PagerAdapter
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -73,12 +73,12 @@ class IntroFragment :
 
     override fun onResume() {
         super.onResume()
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+//        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
     }
 
     override fun onStop() {
         super.onStop()
-        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+//        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
     }
 
     override fun onUIEventTriggered(event: UIEvent) {
@@ -87,8 +87,10 @@ class IntroFragment :
                 showProgressDialog()
             }
             is UIEvent.OnNextClick -> {
+                findNavController().navigate(IntroFragmentDirections.actionIntroFragmentToItemDetailFragment())
             }
             is UIEvent.OnSkipClick -> {
+                findNavController().navigate(IntroFragmentDirections.actionIntroFragmentToCartFragment())
             }
         }
     }
