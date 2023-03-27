@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="lifecycle"
             type="androidx.lifecycle.LifecycleOwner" />
@@ -13,11 +12,446 @@
             type="com.techexpert.ezdine.app.main.detail.ItemDetailViewModel" />
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHeaderView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_top_banner"
+            android:paddingBottom="@dimen/dm_32"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvRestaurantName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dm_16"
+                android:layout_marginTop="@dimen/dm_16"
+                android:fontFamily="@font/lato_bold"
+                android:text="Veg Aroma"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCartItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dm_16"
+                android:background="@drawable/bg_cart_view"
+                android:drawablePadding="@dimen/dm_4"
+                android:fontFamily="@font/lato_bold"
+                android:paddingStart="@dimen/dm_12"
+                android:paddingTop="@dimen/dm_4"
+                android:paddingEnd="@dimen/dm_12"
+                android:paddingBottom="@dimen/dm_4"
+                android:text="1"
+                android:textColor="@color/dark_black"
+                app:drawableLeftCompat="@drawable/ic_cart"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRestaurantName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvRestaurantName" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvFoodItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dm_16"
+            android:layout_marginTop="@dimen/dm_32"
+            android:layout_marginEnd="@dimen/dm_16"
+            app:cardCornerRadius="@dimen/dm_12"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clHeaderView">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivFoodItem"
+            android:layout_width="@dimen/_230sdp"
+            android:layout_height="@dimen/_170sdp"
+            app:srcCompat="@drawable/ic_custom_paneer_bm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clHeaderView"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dm_16"
+            android:background="@color/light_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cvFoodItem">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTopCategories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dm_16"
+                android:layout_marginTop="@dimen/dm_16"
+                android:fontFamily="@font/lato_bold"
+                android:text="Paneer Butter Masala"
+                android:textColor="@color/dark_black"
+                android:textSize="@dimen/text_size_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgFoodCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dm_16"
+                android:paddingStart="@dimen/dm_25"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTopCategories"
+                app:singleLine="true"
+                app:singleSelection="true">
+
+
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Veg"
+                    android:textColor="@android:color/background_dark"
+                    android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
+                    app:chipIcon="@drawable/ic_veg"
+                    app:chipIconVisible="true"
+                    app:chipIconEnabled="true"
+                    app:chipIconSize="@dimen/dm_20"
+                    app:chipBackgroundColor="@color/white"
+                    app:iconEndPadding="@dimen/dm_8"
+                    app:chipEndPadding="8dp"
+                    app:chipStartPadding="12dp"
+                    app:textEndPadding="5dp"
+                    app:textStartPadding="5dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Main Course"
+                    android:textColor="@android:color/background_dark"
+                    android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
+                    app:chipIcon="@drawable/ic_main_course"
+                    app:chipIconVisible="true"
+                    app:chipIconEnabled="true"
+                    app:chipIconSize="@dimen/dm_20"
+                    app:chipBackgroundColor="@color/white"
+                    app:iconEndPadding="@dimen/dm_8"
+                    app:chipEndPadding="8dp"
+                    app:chipStartPadding="12dp"
+                    app:textEndPadding="5dp"
+                    app:textStartPadding="5dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chef special"
+                    android:textColor="@android:color/background_dark"
+                    android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
+                    app:chipIcon="@drawable/ic_chef_special"
+                    app:chipIconVisible="true"
+                    app:chipIconEnabled="true"
+                    app:chipIconSize="@dimen/dm_20"
+                    app:chipBackgroundColor="@color/white"
+                    app:iconEndPadding="@dimen/dm_8"
+                    app:chipEndPadding="8dp"
+                    app:chipStartPadding="12dp"
+                    app:textEndPadding="5dp"
+                    app:textStartPadding="5dp" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dm_16"
+                android:layout_marginTop="@dimen/dm_16"
+                android:fontFamily="@font/lato_bold"
+                android:text="₹ 220"
+                android:textColor="@color/dark_black"
+                android:textSize="@dimen/text_size_24"
+                android:layout_marginEnd="@dimen/dm_20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cgFoodCategories" />
+
+
+            <LinearLayout
+                android:id="@+id/llQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/dm_25"
+                app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+                android:background="@drawable/bg_search_view"
+                android:backgroundTint="@color/white"
+                android:layout_marginTop="@dimen/dm_16"
+                android:layout_marginEnd="@dimen/dm_25">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPlus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dm_16"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="+"
+                    android:textColor="@color/dark_black"
+                    android:textSize="@dimen/text_size_24"
+                    android:layout_marginEnd="@dimen/dm_20"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cgFoodCategories" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dm_16"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="1"
+                    android:textColor="@color/dark_black"
+                    android:textSize="@dimen/text_size_24"
+                    android:layout_marginTop="@dimen/dm_8"
+                    android:layout_marginBottom="@dimen/dm_8"
+                    android:layout_marginEnd="@dimen/dm_20"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cgFoodCategories" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvMinus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dm_16"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="-"
+                    android:textColor="@color/dark_black"
+                    android:textSize="@dimen/text_size_32"
+                    android:layout_marginEnd="@dimen/dm_20"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cgFoodCategories" />
+
+
+            </LinearLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRecommended"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dm_16"
+                android:layout_marginTop="@dimen/dm_16"
+                android:fontFamily="@font/lato_bold"
+                android:text="Recommended for you"
+                android:textColor="@color/dark_black"
+                android:textSize="@dimen/text_size_16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llQuantity" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRecommendedViewAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dm_16"
+                android:fontFamily="@font/lato_bold"
+                android:text="View all"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_size_14"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRecommended"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvRecommended" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvItem1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dm_25"
+                android:layout_marginTop="@dimen/dm_16"
+                android:layout_marginBottom="@dimen/dm_16"
+                app:cardCornerRadius="@dimen/dm_12"
+                app:cardElevation="0dp"
+                android:onClick="@{()->vm.onNextClick()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvRecommended">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvFoodItem1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dm_16"
+                        android:layout_marginTop="@dimen/dm_16"
+                        android:layout_marginEnd="@dimen/dm_16"
+                        app:cardCornerRadius="@dimen/dm_8"
+                        app:cardElevation="0dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="@dimen/_100sdp"
+                            app:srcCompat="@drawable/ic_custom_pavbhaji" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFoodItem1Name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dm_16"
+                        android:layout_marginTop="@dimen/dm_12"
+                        android:layout_marginBottom="@dimen/dm_16"
+                        android:fontFamily="@font/lato_medium"
+                        android:lines="2"
+                        android:text="Pav Bhaji"
+                        android:textColor="@color/dark_black"
+                        android:textSize="@dimen/text_size_12"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tvFoodItem1Price"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cvFoodItem1" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFoodItem1Price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dm_12"
+                        android:layout_marginEnd="@dimen/dm_16"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="₹ 120"
+                        android:textColor="@color/dark_black"
+                        android:textSize="@dimen/text_size_12"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cvFoodItem1" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvItem2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dm_16"
+                android:layout_marginTop="@dimen/dm_16"
+                android:layout_marginEnd="@dimen/dm_25"
+                android:layout_marginBottom="@dimen/dm_16"
+                app:cardCornerRadius="@dimen/dm_12"
+                app:cardElevation="0dp"
+                android:onClick="@{()->vm.onSkipClick()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cvItem1"
+                app:layout_constraintTop_toBottomOf="@+id/tvRecommended">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvFoodItem2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dm_16"
+                        android:layout_marginTop="@dimen/dm_16"
+                        android:layout_marginEnd="@dimen/dm_16"
+                        app:cardCornerRadius="@dimen/dm_8"
+                        app:cardElevation="0dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/_100sdp"
+                            android:layout_height="@dimen/_100sdp"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_custom_paneer_bm" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFoodItem2Name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dm_16"
+                        android:layout_marginTop="@dimen/dm_12"
+                        android:layout_marginBottom="@dimen/dm_16"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="Paneer Butter Masala"
+                        android:textColor="@color/dark_black"
+                        android:textSize="@dimen/text_size_12"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tvFoodItem2Price"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cvFoodItem2" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFoodItem2Price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dm_12"
+                        android:layout_marginEnd="@dimen/dm_16"
+                        android:fontFamily="@font/lato_medium"
+                        android:text="₹ 220"
+                        android:textColor="@color/dark_black"
+                        android:textSize="@dimen/text_size_12"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cvFoodItem2" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dm_16"
+            android:layout_marginEnd="@dimen/dm_16"
+            android:layout_marginBottom="@dimen/dm_16"
+            android:background="@drawable/bg_black_view"
+            android:drawablePadding="@dimen/dm_4"
+            android:fontFamily="@font/lato_bold"
+            android:gravity="center"
+            android:elevation="@dimen/dm_4"
+            android:paddingVertical="@dimen/dm_12"
+            android:text="Add to Cart"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/viewGradient"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dm_100"
+            android:background="@drawable/bg_transparent_white_gradient"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>
